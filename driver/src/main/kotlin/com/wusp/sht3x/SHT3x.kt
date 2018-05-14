@@ -1,7 +1,8 @@
 package com.wusp.sht3x
 
 import com.google.android.things.pio.I2cDevice
-import com.google.android.things.pio.PeripheralManagerService
+import com.google.android.things.pio.PeripheralManager
+
 import kotlinx.coroutines.experimental.CancellationException
 import kotlinx.coroutines.experimental.withTimeout
 import java.io.IOException
@@ -12,7 +13,7 @@ import android.util.Log
  * Created by wusp on 2017/10/17.
  */
 class SHT3x(val bus: String, val address: Int) : AutoCloseable {
-    val device = PeripheralManagerService().openI2cDevice(bus, address)
+    val device = PeripheralManager.getInstance().openI2cDevice(bus, address)
 
     companion object {
         val TAG: String = SHT3x::class.java.simpleName
